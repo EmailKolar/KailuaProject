@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Contract {
         Scanner scanner = new Scanner(System.in);
 
-    public void menu(){
+    public void contractMenu(){
         boolean isRunning = true;
 
         while(isRunning){
