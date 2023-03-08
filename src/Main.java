@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
+    SQLHandler sqlHandler = new SQLHandler();
     Scanner scanner = new Scanner(System.in);
     Car car = new Car();
     Renter renter = new Renter();
@@ -9,7 +10,8 @@ public class Main {
         new Main().run();
     }
     void run(){
-       menu();
+        sqlHandler.printRenter("SELECT * FROM kailua.renter");
+//       menu();
     }
 
 
