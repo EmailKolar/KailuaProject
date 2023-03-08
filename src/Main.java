@@ -9,12 +9,23 @@ public class Main {
         new Main().run();
     }
     void run(){
-
+       menu();
     }
 
 
     public void menu(){
+        boolean isRunning = true;
 
+        while(isRunning){
+            printMainMenu();
+            int choice = readMenuChoice();
+            switch (choice){
+                case 1 -> car.carMenu();
+                case 2 -> renter.renterMenu();
+                case 3 -> contract.contractMenu();
+                case 9 -> isRunning = false;
+            }
+        }
     }
 
     public void printMainMenu(){
