@@ -1,6 +1,12 @@
+import java.util.Scanner;
+
 public class Main {
+    Scanner scanner = new Scanner(System.in);
+    Car car = new Car();
+    Renter renter = new Renter();
+    Contract contract = new Contract();
     public static void main(String[] args) {
-        System.out.println("hello gitWorld");
+        new Main().run();
     }
     void run(){
 
@@ -10,7 +16,19 @@ public class Main {
     public void menu(){
 
     }
-    public void printMenu(){
+
+    public void printMainMenu(){
+        System.out.println("1. Register, edit, delete, or view CARS from database");
+        System.out.println("2. Register, edit, delete, or view RENTERS from database");
+        System.out.println("3. Register, edit, delete, or view CONTRACTS from database");
+        System.out.println("9. EXIT");
+    }
+
+    public int readMenuChoice(){
+        System.out.println("Enter number: ");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+        return choice;
 
     }
 
