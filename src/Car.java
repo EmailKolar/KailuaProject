@@ -1,8 +1,34 @@
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Car {
 
+    private String registrationNumber;
+    private String brand;
+    private String model;
+    private String fuelType;
+    private int odometer;
+    private Date registrationDate;
+    private Type type;
     Scanner scanner = new Scanner(System.in);
+    private static ArrayList<Car> cars = new ArrayList<>();
+    public Car(String registrationNumber, String brand, String model, String fuelType, int odometer,
+               Date registrationDate, Type type){
+        setRegistrationNumber(registrationNumber);
+        setBrand(brand);
+        setModel(model);
+        setFuelType(fuelType);
+        setOdometer(odometer);
+        setRegistrationDate(registrationDate);
+        setType(type);
+    }
+    public Car(){
+
+    }
+
+
+
 
     public void carMenu(){
         boolean isRunning = true;
