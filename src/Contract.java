@@ -1,7 +1,34 @@
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Contract {
         Scanner scanner = new Scanner(System.in);
+
+        private int contractID;
+        private Date fromDateTime;
+        private Date toDateTime;
+        private String driverLicenseNumber;
+        private String registrationNumber;
+        private int odometerAtStart;
+
+        private ArrayList<Contract> contracts = new ArrayList<>();
+
+        public Contract(int contractID, Date fromDateTime, Date toDateTime, String driverLicenseNumber,
+                        String registrationNumber, int odometerAtStart){
+            setContractID(contractID);
+            setFromDateTime(fromDateTime);
+            setToDateTime(toDateTime);
+            setDriverLicenseNumber(driverLicenseNumber);
+            setRegistrationNumber(registrationNumber);
+            setOdometerAtStart(odometerAtStart);
+
+        }
+
+        public Contract(){
+
+        }
+
 
     public void contractMenu(){
         boolean isRunning = true;
@@ -77,4 +104,54 @@ public class Contract {
         return choice;
     }
 
+    public void setContractID(int contractID) {
+        this.contractID = contractID;
+    }
+
+    public void setFromDateTime(Date fromDateTime) {
+        this.fromDateTime = fromDateTime;
+    }
+
+    public void setDriverLicenseNumber(String driverLicenseNumber) {
+        this.driverLicenseNumber = driverLicenseNumber;
+    }
+
+    public void setOdometerAtStart(int odometerAtStart) {
+        this.odometerAtStart = odometerAtStart;
+    }
+
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
+    }
+
+    public void setToDateTime(Date toDateTime) {
+        this.toDateTime = toDateTime;
+    }
+
+    public Date getFromDateTime() {
+        return fromDateTime;
+    }
+
+    public Date getToDateTime() {
+        return toDateTime;
+    }
+
+    public int getOdometerAtStart() {
+        return odometerAtStart;
+    }
+
+    public int getContractID() {
+        return contractID;
+    }
+
+    public String getDriverLicenseNumber() {
+        return driverLicenseNumber;
+    }
+
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+    public void addContractToList(Contract contract){
+        contracts.add(contract);
+    }
 }

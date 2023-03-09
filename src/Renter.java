@@ -1,16 +1,42 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Renter {
 
     Scanner scanner = new Scanner(System.in);
+    private String driverLicenseNumber;
+    private String name;
+    private String address;
+    private String zip;
+    private String city;
+    private String mobilePhone;
+    private String phone;
+    private String email;
+    private static ArrayList<Renter> renters = new ArrayList<>();
 
-    public void renterMenu(){
+    public Renter(){
+
+    }
+
+    public Renter(String driverLicenseNumber, String name, String address,
+                  String zip, String city, String mobilePhone, String phone, String email) {
+        setDriverLicenseNumber(driverLicenseNumber);
+        setName(name);
+        setAddress(address);
+        setZip(zip);
+        setCity(city);
+        setMobilePhone(mobilePhone);
+        setPhone(phone);
+        setEmail(email);
+    }
+
+    public void renterMenu() {
         boolean isRunning = true;
 
-        while(isRunning){
+        while (isRunning) {
             printRenterMenu();
             int choice = readMenuChoice();
-            switch (choice){
+            switch (choice) {
                 case 1 -> registerRenter();
                 case 2 -> editRenter();
                 case 3 -> deleteRenter();
@@ -58,13 +84,13 @@ public class Renter {
         System.out.println("9. BACK");
     }
 
-    public void renterSearchMenu(){
+    public void renterSearchMenu() {
         boolean isRunning = true;
 
-        while(isRunning){
+        while (isRunning) {
             printRenterSearchMenu();
             int choice = readMenuChoice();
-            switch (choice){
+            switch (choice) {
 //                case 1 -> //TODO SQL handler here? To search;
 //                case 2 -> ;
 //                case 3 -> ;
@@ -75,10 +101,82 @@ public class Renter {
         }
     }
 
-    public int readMenuChoice(){
+    public int readMenuChoice() {
         System.out.println("Enter number: ");
         int choice = scanner.nextInt();
         scanner.nextLine();
         return choice;
     }
+
+    public String getDriverLicenseNumber() {
+        return driverLicenseNumber;
+    }
+
+    public void setDriverLicenseNumber(String driverLicenseNumber) {
+        this.driverLicenseNumber = driverLicenseNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public ArrayList<Renter> getRenters() {
+        return renters;
+    }
+    public void addRenterToList(Renter renter){
+        renters.add(renter);
+    }
+
 }

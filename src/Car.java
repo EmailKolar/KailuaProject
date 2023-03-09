@@ -1,8 +1,34 @@
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Car {
 
+    private String registrationNumber;
+    private String brand;
+    private String model;
+    private String fuelType;
+    private int odometer;
+    private Date registrationDate;
+    private Type type;
     Scanner scanner = new Scanner(System.in);
+    private static ArrayList<Car> cars = new ArrayList<>();
+    public Car(String registrationNumber, String brand, String model, String fuelType, int odometer,
+               Date registrationDate, Type type){
+        setRegistrationNumber(registrationNumber);
+        setBrand(brand);
+        setModel(model);
+        setFuelType(fuelType);
+        setOdometer(odometer);
+        setRegistrationDate(registrationDate);
+        setType(type);
+    }
+    public Car(){
+
+    }
+
+
+
 
     public void carMenu(){
         boolean isRunning = true;
@@ -34,8 +60,13 @@ public class Car {
 
     }
 
-    private void editCar() {
-
+    public String editCar(Car car) {
+        //query nedenunder opdatere en bil baseret på registration_number
+        String query = "UPDATE car SET brand = \'" + car.getBrand() + "\', model = \'" + car.getModel() +
+                "\', fuel_type = \'" + car.getFuelType() + "\', odometer = " + car.getOdometer() +
+                ", first_registration_mon_yr = \'" + car.getRegistrationDate() + "\', rental_type = \'" +
+                car.getType() + "\' WHERE registration_number = \'" + car.getRegistrationNumber() + "\'";
+        return query;
     }
 
     private void deleteCar() {
@@ -81,4 +112,79 @@ public class Car {
     }
 
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
+    }
+
+    public int getOdometer() {
+        return odometer;
+    }
+
+    public void setOdometer(int odometer) {
+        this.odometer = odometer;
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public ArrayList<Car> getCars() {
+        return cars;
+    }
+    public void addCarToList(Car car){
+        cars.add(car);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "registrationNumber='" + registrationNumber + '\'' +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", fuelType='" + fuelType + '\'' +
+                ", odometer=" + odometer +
+                ", registrationDate=" + registrationDate +
+                ", type=" + type +
+                '}';
+    }
 }

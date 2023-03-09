@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +11,11 @@ public class Main {
         new Main().run();
     }
     void run(){
-        sqlHandler.printRenter("SELECT * FROM kailua.renter");
+        sqlHandler.generateCarList("SELECT * FROM kailua.car");
+        ArrayList<Car> cars = car.getCars();
+        cars.get(0).setBrand("Porsche");
+        sqlHandler.executeUpdate(car.editCar(cars.get(0)));
+
 //       menu();
     }
 
