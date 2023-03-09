@@ -38,7 +38,7 @@ public class Car {
             int choice = readMenuChoice();
             switch (choice){
                 case 1 -> registerCar();
-                case 2 -> editCar();
+                //case 2 -> editCar();
                 case 3 -> deleteCar();
                 case 4 -> viewAllCars();
                 case 5 -> carSearchMenu();
