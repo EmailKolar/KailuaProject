@@ -117,7 +117,7 @@ public class Car extends UserInput {
     }
 
     private void viewAllCars() {
-        //TODO
+        //TODO Laurits Yoink (formater toString pænt)
         for (Car car : cars) {
             System.out.println(car);
         }

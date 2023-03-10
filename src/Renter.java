@@ -78,7 +78,7 @@ public class Renter extends UserInput {
     }
 
     private void editRenter() {
-        //TODO
+        //TODO Laurits Yoink
 
     }
 
@@ -123,11 +123,11 @@ public class Renter extends UserInput {
     }
 
     private void viewAllRenters() {
-        //TODO
+        //TODO Pæn formatering Emil yoink
     }
 
     public void renterSearch(){
-        //TODO
+        //TODO Emil yoink
     }
 
     public int readMenuChoice() {

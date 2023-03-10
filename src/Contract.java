@@ -93,7 +93,7 @@ public class Contract extends UserInput {
 
 
     private void editContract() {
-        //TODO
+        //TODO UPDATE Laurits Yoink
     }
 
     private void deleteContract() {
@@ -114,7 +114,7 @@ public class Contract extends UserInput {
     }
 
     private void viewAllContracts() {
-        //TODO
+        //TODO for loop print arraylist ud (formater toString så det er pænt) Laurits Yoink
     }
 
     @Override
