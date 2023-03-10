@@ -2,41 +2,41 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Contract {
-        Scanner scanner = new Scanner(System.in);
+public class Contract extends UserInput{
+    Scanner scanner = new Scanner(System.in);
 
-        private int contractID;
-        private Date fromDateTime;
-        private Date toDateTime;
-        private String driverLicenseNumber;
-        private String registrationNumber;
-        private int odometerAtStart;
+    private int contractID;
+    private Date fromDateTime;
+    private Date toDateTime;
+    private String driverLicenseNumber;
+    private String registrationNumber;
+    private int odometerAtStart;
 
-        private ArrayList<Contract> contracts = new ArrayList<>();
+    private ArrayList<Contract> contracts = new ArrayList<>();
 
-        public Contract(int contractID, Date fromDateTime, Date toDateTime, String driverLicenseNumber,
-                        String registrationNumber, int odometerAtStart){
-            setContractID(contractID);
-            setFromDateTime(fromDateTime);
-            setToDateTime(toDateTime);
-            setDriverLicenseNumber(driverLicenseNumber);
-            setRegistrationNumber(registrationNumber);
-            setOdometerAtStart(odometerAtStart);
+    public Contract(int contractID, Date fromDateTime, Date toDateTime, String driverLicenseNumber,
+                    String registrationNumber, int odometerAtStart) {
+        setContractID(contractID);
+        setFromDateTime(fromDateTime);
+        setToDateTime(toDateTime);
+        setDriverLicenseNumber(driverLicenseNumber);
+        setRegistrationNumber(registrationNumber);
+        setOdometerAtStart(odometerAtStart);
 
-        }
+    }
 
-        public Contract(){
+    public Contract() {
 
-        }
+    }
 
 
-    public void contractMenu(){
+    public void contractMenu() {
         boolean isRunning = true;
 
-        while(isRunning){
+        while (isRunning) {
             printContractMenu();
             int choice = readMenuChoice();
-            switch (choice){
+            switch (choice) {
                 case 1 -> registerContract();
                 case 2 -> editContract();
                 case 3 -> deleteContract();
@@ -57,19 +57,19 @@ public class Contract {
     }
 
     private void registerContract() {
-
+        //TODO
     }
 
     private void editContract() {
-
+        //TODO
     }
 
     private void deleteContract() {
-
+        //TODO
     }
 
     private void viewAllContracts() {
-
+        //TODO
     }
 
     public void printContractSearchMenu() {
@@ -80,24 +80,24 @@ public class Contract {
         System.out.println("9. BACK");
     }
 
-    public void contractSearchMenu(){
+    public void contractSearchMenu() {
         boolean isRunning = true;
 
-        while(isRunning){
+        while (isRunning) {
             printContractSearchMenu();
             int choice = readMenuChoice();
-            switch (choice){
+            switch (choice) {
 //                case 1 -> //TODO SQL handler here? To search;
-//                case 2 -> ;
-//                case 3 -> ;
-//                case 4 -> ;
-//                case 5 -> ;
+//                case 2 -> ; //TODO
+//                case 3 -> ; //TODO
+//                case 4 -> ; //TODO
+//                case 5 -> ; //TODO
 //                case 9 -> isRunning = false;
             }
         }
     }
 
-    public int readMenuChoice(){
+    public int readMenuChoice() {
         System.out.println("Enter number: ");
         int choice = scanner.nextInt();
         scanner.nextLine();
@@ -151,7 +151,8 @@ public class Contract {
     public String getRegistrationNumber() {
         return registrationNumber;
     }
-    public void addContractToList(Contract contract){
+
+    public void addContractToList(Contract contract) {
         contracts.add(contract);
     }
 }

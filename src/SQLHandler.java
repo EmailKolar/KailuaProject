@@ -53,13 +53,13 @@ public class SQLHandler {
     }
 
 
-    public void generateCarList(String sql) {
+    public void generateCarList() {
         try {
-            ResultSet rs = getRS(sql);
+            ResultSet rs = getRS("SELECT * FROM kailua.car");
             if (rs != null) {
                 while (rs.next()) {
                     Car car1 = new Car(rs.getString(1), rs.getString(2), rs.getString(3),
-                            rs.getString(4), rs.getInt(5), rs.getDate(6),
+                            rs.getString(4), rs.getInt(5), rs.getString(6),
                             Type.valueOf(rs.getString(7)));
                     car.addCarToList(car1);
                 }

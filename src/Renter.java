@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Renter {
+public class Renter extends UserInput {
 
     Scanner scanner = new Scanner(System.in);
     private String driverLicenseNumber;
@@ -14,7 +14,7 @@ public class Renter {
     private String email;
     private static ArrayList<Renter> renters = new ArrayList<>();
 
-    public Renter(){
+    public Renter() {
 
     }
 
@@ -57,19 +57,19 @@ public class Renter {
     }
 
     private void registerRenter() {
-
+        //TODO
     }
 
     private void editRenter() {
-
+        //TODO
     }
 
     private void deleteRenter() {
-
+        //TODO
     }
 
     private void viewAllRenters() {
-
+        //TODO
     }
 
     public void printRenterSearchMenu() {
@@ -92,10 +92,10 @@ public class Renter {
             int choice = readMenuChoice();
             switch (choice) {
 //                case 1 -> //TODO SQL handler here? To search;
-//                case 2 -> ;
-//                case 3 -> ;
-//                case 4 -> ;
-//                case 5 -> ;
+//                case 2 -> ; //TODO
+//                case 3 -> ; //TODO
+//                case 4 -> ; //TODO
+//                case 5 -> ; //TODO
 //                case 9 -> isRunning = false;
             }
         }
@@ -175,7 +175,8 @@ public class Renter {
     public ArrayList<Renter> getRenters() {
         return renters;
     }
-    public void addRenterToList(Renter renter){
+
+    public void addRenterToList(Renter renter) {
         renters.add(renter);
     }
 
