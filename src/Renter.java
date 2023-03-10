@@ -62,7 +62,7 @@ public class Renter extends UserInput {
     private void registerRenter() {
         //TODO TEST ME
         Renter renterTemp = new Renter();
-        //TODO If driver license number already exists write message?
+        //TODO If driver license number already exists write message? - Mathias
         renterTemp.setDriverLicenseNumber(stringIn("Write the driver license number of the renter (8 characters): "));
         renterTemp.setName(stringIn("Write the full name of the renter: "));
         renterTemp.setAddress(stringIn("Write the address of the renter (Street + number): "));

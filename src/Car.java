@@ -42,13 +42,17 @@ public class Car extends UserInput {
             int choice = readMenuChoice();
             switch (choice) {
                 case 1 -> registerCar();
-                //case 2 -> editCar();
+                case 2 -> editCar();
                 case 3 -> deleteCar();
                 case 4 -> viewAllCars();
                 case 5 -> searchForCar();
                 case 9 -> isRunning = false;
             }
         }
+    }
+
+    private void editCar() {
+        //TODO Laurits Yoink
     }
 
     public void printCarMenu() {
