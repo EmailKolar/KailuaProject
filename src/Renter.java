@@ -13,6 +13,8 @@ public class Renter extends UserInput {
     private String phone;
     private String email;
     private static ArrayList<Renter> renters = new ArrayList<>();
+    private static SQLHandler sqlHandler = new SQLHandler();
+
 
     public Renter() {
 
@@ -34,6 +36,7 @@ public class Renter extends UserInput {
         boolean isRunning = true;
 
         while (isRunning) {
+            sqlHandler.generateRenterList(); //Creates ArrayList of renters
             printRenterMenu();
             int choice = readMenuChoice();
             switch (choice) {
@@ -57,15 +60,66 @@ public class Renter extends UserInput {
     }
 
     private void registerRenter() {
-        //TODO
+        //TODO TEST ME
+        Renter renterTemp = new Renter();
+        //TODO If driver license number already exists write message?
+        renterTemp.setDriverLicenseNumber(stringIn("Write the driver license number of the renter (8 characters): "));
+        renterTemp.setName(stringIn("Write the full name of the renter: "));
+        renterTemp.setAddress(stringIn("Write the address of the renter (Street + number): "));
+        renterTemp.setZip(stringIn("Write the zip code of the renter: "));
+        renterTemp.setCity(stringIn("Write the city of the renter: "));
+        renterTemp.setMobilePhone(stringIn("Write the mobile phone number of the renter: "));
+        renterTemp.setPhone(stringIn("Write the phone number of the renter (Press enter if renter does not have one): "));
+        renterTemp.setEmail(stringIn("Write the email address of the renter: "));
+
+        System.out.println("DEBUG" + renterTemp);
+        sqlHandler.executeUpdate(getInsertRenterQuery(renterTemp));
+        System.out.println("DEBUG: Renter was successfully added to the database :)");
     }
 
     private void editRenter() {
         //TODO
+
+    }
+
+    public String getUpdateRenterQuery(Renter renter) {  //TODO TEST ME
+        //query nedenunder opdatere en renter baseret på registration_number
+        String query = "UPDATE renter SET driver_license_number = \'" + renter.getDriverLicenseNumber() +
+                "\', name = \'" + renter.getName() +
+                "\', address = \'" + renter.getAddress() + "\', zip = " + renter.getZip() +
+                ", city = \'" + renter.getCity() + "\', mobile_phone = \'" +
+                renter.getMobilePhone() + "\', phone = \'" +
+                renter.getPhone() + "\', email = \'" +
+                renter.getEmail() + "\' WHERE driver_license_number = \'" + renter.getDriverLicenseNumber() + "\'";
+        //System.out.println(query); //For debugging
+        return query;
+    }
+
+    public String getInsertRenterQuery(Renter renter) { //TODO TEST ME
+        //query nedenunder indsætter en ny renter ind i databasen.
+        String query = "INSERT INTO renter VALUES " +
+                "(\'" + renter.getDriverLicenseNumber() + "\', \'" + renter.getName() +
+                "\', \'" + renter.getAddress() + "\', \'" + renter.zip + "\', \'" +
+                renter.city + "\', \'" + renter.getMobilePhone() +
+                "\', \'" + renter.getPhone() + "\', \'" + renter.getEmail() + "\')";
+        System.out.println(query); //For debugging
+        return query;
     }
 
     private void deleteRenter() {
-        //TODO
+        boolean renterDoesNotExist = true;
+        String tempDriverLicenseNumber = stringIn("Please type the driver license number of the renter you want to delete: ");
+        for (int i = 0; i < renters.size(); i++) {
+            if (renters.get(i).getDriverLicenseNumber().equals(tempDriverLicenseNumber)) {
+                String query = "DELETE FROM renter WHERE driver_license_number = \'" + tempDriverLicenseNumber + "\'";
+                sqlHandler.executeUpdate(query);
+                renterDoesNotExist = false;
+                System.out.println("Renter has been deleted\n");
+            }
+        }
+        if (renterDoesNotExist) {
+            System.out.println("Driver license number does not exist\n");
+        }
     }
 
     private void viewAllRenters() {
@@ -113,7 +167,17 @@ public class Renter extends UserInput {
     }
 
     public void setDriverLicenseNumber(String driverLicenseNumber) {
-        this.driverLicenseNumber = driverLicenseNumber;
+        boolean numberExist = false;
+        for (int i = 0; i < renters.size(); i++) {
+            if (renters.get(i).getDriverLicenseNumber().equals(driverLicenseNumber)) {
+                numberExist = true;
+            }
+        }
+        if (!numberExist){
+            this.driverLicenseNumber = driverLicenseNumber;
+        }else{
+            setDriverLicenseNumber(stringIn("The given driver license number already exist. please try again"));
+        }
     }
 
     public String getName() {

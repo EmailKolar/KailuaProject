@@ -13,6 +13,7 @@ public class Contract extends UserInput {
     private int odometerAtStart;
 
     private ArrayList<Contract> contracts = new ArrayList<>();
+    private static SQLHandler sqlHandler = new SQLHandler();
 
     public Contract(String contractID, String fromDateTime, String toDateTime, String driverLicenseNumber,
                     String registrationNumber, int odometerAtStart) {
@@ -34,6 +35,7 @@ public class Contract extends UserInput {
         boolean isRunning = true;
 
         while (isRunning) {
+            sqlHandler.generateContractList(); //Creates ArrayList of contracts
             printContractMenu();
             int choice = readMenuChoice();
             switch (choice) {
@@ -95,7 +97,20 @@ public class Contract extends UserInput {
     }
 
     private void deleteContract() {
-        //TODO
+        //TODO TEST ME
+        boolean contractDoesNotExist = true;
+        String tempContractID = stringIn("Please type the contract ID of the contract you want to delete: ");
+        for (int i = 0; i < contracts.size(); i++) {
+            if (contracts.get(i).getContractID().equals(tempContractID)) {
+                String query = "DELETE FROM contract WHERE contract_id = \'" + tempContractID + "\'";
+                sqlHandler.executeUpdate(query);
+                contractDoesNotExist = false;
+                System.out.println("Contract has been deleted\n");
+            }
+        }
+        if (contractDoesNotExist) {
+            System.out.println("Contract ID does not exist\n");
+        }
     }
 
     private void viewAllContracts() {

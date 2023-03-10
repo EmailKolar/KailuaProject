@@ -36,9 +36,10 @@ public class SQLHandler {
         }
     }
 
-    public void generateContractList(String sql) {
+    public void generateContractList() {
+        String query = "SELECT * FROM renter";
         try {
-            ResultSet rs = getRS(sql);
+            ResultSet rs = getRS(query);
             if (rs != null) {
                 while (rs.next()) {
                     Contract c1 = new Contract(rs.getString(1), rs.getString(2), rs.getString(5),
@@ -70,15 +71,16 @@ public class SQLHandler {
         }
     }
 
-    public void generateRenterList(String sql) {
+    public void generateRenterList() {
+        String query = "SELECT * FROM renter";
         try {
-            ResultSet rs = getRS(sql);
+            ResultSet rs = getRS(query);
             if (rs != null) {
                 while (rs.next()) {
                     Renter tempRenter = new Renter(rs.getString(1), rs.getString(2), rs.getString(3),
                             rs.getString(4), rs.getString(5), rs.getString(6),
                             rs.getString(7), rs.getString(8));
-                    renter.addRenterToList(renter);
+                    renter.addRenterToList(tempRenter);
                 }
             }
         } catch (SQLException e) {
