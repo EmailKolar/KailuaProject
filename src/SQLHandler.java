@@ -41,7 +41,7 @@ public class SQLHandler {
             ResultSet rs = getRS(sql);
             if (rs != null) {
                 while (rs.next()) {
-                    Contract c1 = new Contract(rs.getInt(1), rs.getDate(2), rs.getDate(5),
+                    Contract c1 = new Contract(rs.getString(1), rs.getString(2), rs.getString(5),
                             rs.getString(3), rs.getString(4), rs.getInt(6));
                     contract.addContractToList(c1);
                 }
