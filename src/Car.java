@@ -44,7 +44,7 @@ public class Car extends UserInput {
                 //case 2 -> editCar();
                 case 3 -> deleteCar();
                 case 4 -> viewAllCars();
-                case 5 -> carSearchMenu();
+                case 5 -> searchForCar();
                 case 9 -> isRunning = false;
             }
         }
@@ -55,7 +55,7 @@ public class Car extends UserInput {
         System.out.println("2. Edit car");
         System.out.println("3. Delete car");
         System.out.println("4. View all cars");
-        System.out.println("5. Search menu");
+        System.out.println("5. Search For a Car");
         System.out.println("9. BACK");
     }
 
@@ -96,7 +96,19 @@ public class Car extends UserInput {
     }
 
     private void deleteCar() {
-        //TODO
+        boolean carDoesNotExist = true;
+        String tempRegistrationNumber = stringIn("Please type the registration number of the car you want to delete: ");
+        for (int i = 0; i < cars.size(); i++) {
+            if (cars.get(i).getRegistrationNumber().equals(tempRegistrationNumber)) {
+                String query = "DELETE FROM car WHERE registration_number = \'" + tempRegistrationNumber + "\'";
+                sqlHandler.executeUpdate(query);
+                carDoesNotExist = false;
+                System.out.println("Car has been deleted\n");
+            }
+        }
+        if (carDoesNotExist) {
+            System.out.println("Registration number does not exist\n");
+        }
     }
 
     private void viewAllCars() {
@@ -106,38 +118,32 @@ public class Car extends UserInput {
         }
     }
 
-    public void printCarSearchMenu() {
-        System.out.println("1. Registration number");
-        System.out.println("2. Car brand");
-        System.out.println("3. Car model");
-        System.out.println("4. Fuel type");
-        System.out.println("5. First registration by month and year");
-        System.out.println("6. Rental type");
-        System.out.println("9. BACK");
-    }
-
-    public void carSearchMenu() {
-        boolean isRunning = true;
-
-        while (isRunning) {
-            printCarSearchMenu();
-            int choice = readMenuChoice();
-            switch (choice) {
-//                case 1 -> //TODO SQL handler here? To search;
-//                case 2 -> ;////TODO
-//                case 3 -> ;//TODO
-//                case 4 -> ;//TODO
-//                case 5 -> ;//TODO
-//                case 9 -> isRunning = false;
-            }
-        }
-    }
-
     public int readMenuChoice() {
         System.out.println("Enter number: ");
         int choice = scanner.nextInt();
         scanner.nextLine();
         return choice;
+    }
+
+    public void searchForCar(){
+        System.out.println("You can search by Reg. num., Brand, Model, Fuel type, Reg. Date or Type");
+        String userInput = stringIn("Enter search parameter: ");
+
+        for (Car car : cars) {
+            if (userInput.equals(car.getRegistrationNumber())) {
+                System.out.println(car);
+            } else if (userInput.equals(car.getBrand())) {
+                System.out.println(car);
+            } else if (userInput.equals(car.getModel())) {
+                System.out.println(car);
+            } else if (userInput.equals(car.getFuelType())) {
+                System.out.println(car);
+            } else if (userInput.equals(car.getRegistrationDate())) {
+                System.out.println(car);
+            } else if (userInput.equals(car.getType().toString())) {
+                System.out.println(car);
+            }
+        }
     }
 
 
@@ -219,3 +225,5 @@ public class Car extends UserInput {
                 '}';
     }
 }
+
+

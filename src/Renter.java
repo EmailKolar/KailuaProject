@@ -48,10 +48,10 @@ public class Renter extends UserInput {
     }
 
     public void printRenterMenu() {
-        System.out.println("1. Register new contract");
-        System.out.println("2. Edit contract");
-        System.out.println("3. Delete contract");
-        System.out.println("4. View all contracts");
+        System.out.println("1. Register new renter");
+        System.out.println("2. Edit renter");
+        System.out.println("3. Delete renter");
+        System.out.println("4. View all renter");
         System.out.println("5. Search menu");
         System.out.println("9. BACK");
     }

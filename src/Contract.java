@@ -41,7 +41,7 @@ public class Contract extends UserInput{
                 case 2 -> editContract();
                 case 3 -> deleteContract();
                 case 4 -> viewAllContracts();
-                case 5 -> contractSearchMenu();
+                case 5 -> contractSearch();
                 case 9 -> isRunning = false;
             }
         }
@@ -57,7 +57,17 @@ public class Contract extends UserInput{
     }
 
     private void registerContract() {
-        //TODO
+        Contract contractTemp = new Contract();
+        contractTemp.setRegistrationNumber(stringIn("Write the registration number of the car")); //TODO check if reg num exist
+        contractTemp.setDriverLicenseNumber(stringIn("write the license number of the driver")); //TODO check if renter with given license exist
+        contractTemp.setFromDateTime(dateIn("Write the starting time of contract"));
+        contractTemp.setToDateTime(dateIn("Write the end time of the contract"));
+        contractTemp.setOdometerAtStart(intIn("Write the odometer number on the given car "));
+        //TODO nice to have oven over ^ set odometer automatisk based on given car reg num
+
+        System.out.println("DEBUG" + contractTemp);
+//        sqlHandler.executeUpdate(getInsertCarQuery(carTemp));
+//        System.out.println("DEBUG: Contract was successfully added to the database :)");
     }
 
     private void editContract() {
@@ -80,19 +90,20 @@ public class Contract extends UserInput{
         System.out.println("9. BACK");
     }
 
-    public void contractSearchMenu() {
-        boolean isRunning = true;
-
-        while (isRunning) {
-            printContractSearchMenu();
-            int choice = readMenuChoice();
-            switch (choice) {
-//                case 1 -> //TODO SQL handler here? To search;
-//                case 2 -> ; //TODO
-//                case 3 -> ; //TODO
-//                case 4 -> ; //TODO
-//                case 5 -> ; //TODO
-//                case 9 -> isRunning = false;
+    public void contractSearch() {
+        System.out.println("Search param broooo");
+        String userInput = stringIn("Enter param: ");
+        for (Contract contract : contracts) {
+            if (userInput.equals(contract.getContractID())){
+                System.out.println(contract);
+            } else if (userInput.equals(contract.getFromDateTime())) {
+                System.out.println(contract);
+            } else if (userInput.equals(contract.getDriverLicenseNumber())) {
+                System.out.println(contract);
+            } else if (userInput.equals(contract.getRegistrationNumber())) {
+                System.out.println(contract);
+            } else if (userInput.equals(String.valueOf(contract.getOdometerAtStart()))) {
+                System.out.println(contract);
             }
         }
     }
@@ -140,7 +151,7 @@ public class Contract extends UserInput{
         return odometerAtStart;
     }
 
-    public int getContractID() {
+    public String getContractID() {
         return contractID;
     }
 
@@ -154,5 +165,9 @@ public class Contract extends UserInput{
 
     public void addContractToList(Contract contract) {
         contracts.add(contract);
+    }
+
+    public void setContractID(String contractID) {
+        this.contractID = contractID;
     }
 }
