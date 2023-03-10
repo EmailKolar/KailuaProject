@@ -117,13 +117,22 @@ public class Contract extends UserInput {
         //TODO
     }
 
-    public void printContractSearchMenu() {
-        System.out.println("1. Search by contract ID");
-        System.out.println("2. Search by date created");
-        System.out.println("3. Search by driver license number");
-        System.out.println("4. Search by registration number");
-        System.out.println("9. BACK");
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "scanner=" + scanner +
+                ", contractID='" + contractID + '\'' +
+                ", fromDateTime='" + fromDateTime + '\'' +
+                ", toDateTime='" + toDateTime + '\'' +
+                ", driverLicenseNumber='" + driverLicenseNumber + '\'' +
+                ", registrationNumber='" + registrationNumber + '\'' +
+                ", odometerAtStart=" + odometerAtStart +
+                ", contracts=" + contracts +
+                '}';
     }
+
+
+
 
     public void contractSearch() {
         System.out.println("Search param broooo");
