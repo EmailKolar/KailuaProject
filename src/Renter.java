@@ -44,7 +44,7 @@ public class Renter extends UserInput {
                 case 2 -> editRenter();
                 case 3 -> deleteRenter();
                 case 4 -> viewAllRenters();
-                case 5 -> renterSearchMenu();
+                case 5 -> renterSearch();
                 case 9 -> isRunning = false;
             }
         }
@@ -126,33 +126,8 @@ public class Renter extends UserInput {
         //TODO
     }
 
-    public void printRenterSearchMenu() {
-        System.out.println("1. Driver license number");
-        System.out.println("2. Name");
-        System.out.println("3. Address");
-        System.out.println("4. Zip code");
-        System.out.println("5. City");
-        System.out.println("6. Mobile phone");
-        System.out.println("7. Phone");
-        System.out.println("8. Email");
-        System.out.println("9. BACK");
-    }
-
-    public void renterSearchMenu() {
-        boolean isRunning = true;
-
-        while (isRunning) {
-            printRenterSearchMenu();
-            int choice = readMenuChoice();
-            switch (choice) {
-//                case 1 -> //TODO SQL handler here? To search;
-//                case 2 -> ; //TODO
-//                case 3 -> ; //TODO
-//                case 4 -> ; //TODO
-//                case 5 -> ; //TODO
-//                case 9 -> isRunning = false;
-            }
-        }
+    public void renterSearch(){
+        //TODO
     }
 
     public int readMenuChoice() {
