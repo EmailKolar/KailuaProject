@@ -195,8 +195,9 @@ public class Renter extends UserInput {
         return driverLicenseNumber;
     }
 
-    public void setDriverLicenseNumber(String driverLicenseNumber) {
+    public void setDriverLicenseNumber(String driverLicenseNumber) { //TODO fix - den første sammenligner første med første
         boolean numberExist = false;
+        //TODO IF renter == null;
         for (int i = 0; i < renters.size(); i++) {
             if (renters.get(i).getDriverLicenseNumber().equals(driverLicenseNumber)) {
                 numberExist = true;
