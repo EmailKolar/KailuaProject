@@ -52,7 +52,32 @@ public class Car extends UserInput {
     }
 
     private void editCar() {
-        //TODO Laurits Yoink
+        //TODO Laurits Yoink DONE BUT TEST ME AGAIN
+
+        boolean registrationNumberDoesNotExist = true;
+        //What car do you want to edit? By registration number perhaps
+        String tempRegNum = stringIn("Please type the registration number of the car you want to edit: ");
+        for (int i = 0; i < cars.size(); i++) {
+            if (cars.get(i).getRegistrationNumber().equals(tempRegNum)) {
+                registrationNumberDoesNotExist = false;
+                //Edit car
+                //cars.get(i).setRegistrationNumber(stringIn("Write the registration number of the car: "));
+                cars.get(i).setBrand(stringIn("Write the brand of the car: "));
+                cars.get(i).setModel(stringIn("Write the model of the car: "));
+                cars.get(i).setFuelType(stringIn("Write the fuel type of the car: ")); //TODO skal vi bruge enum som fuel type?
+                cars.get(i).setOdometer(intIn("How many km. has the car driven: "));
+                cars.get(i).setType(typeIn("What type of car is it"));
+                cars.get(i).setRegistrationDate(dateIn("Write the registration Date of the car"));
+                sqlHandler.executeUpdate(getUpdateCarQuery(cars.get(i)));
+                System.out.println("Car has been updated <3\n");
+            }
+        }
+        if (registrationNumberDoesNotExist) {
+            System.out.println("Registration number does not exist\n");
+            //FIXME Should this loop and ask again or is this fine? Goes back to car menu
+        }
+        //Then update each element? Or choose specific element to update?
+
     }
 
     public void printCarMenu() {
@@ -64,7 +89,7 @@ public class Car extends UserInput {
         System.out.println("9. BACK");
     }
 
-    private void registerCar() {
+    private void registerCar() {   //FIXME When registering new car this message appears: SQLException: Unknown column 'ABDC483' in 'field list'
         Car carTemp = new Car();
         carTemp.setRegistrationNumber(stringIn("Write the registration number of the car: "));
         carTemp.setBrand(stringIn("Write the brand of the car: "));
@@ -117,7 +142,8 @@ public class Car extends UserInput {
     }
 
     private void viewAllCars() {
-        //TODO Laurits Yoink (formater toString pænt)
+        //TODO Laurits Yoink (formater toString pænt) TEST ME Mathias & Emil thoughts???
+        //FIXME Everytime we press 4 to view all cars the amount of cars double
         for (Car car : cars) {
             System.out.println(car);
         }
@@ -218,16 +244,20 @@ public class Car extends UserInput {
 
     @Override
     public String toString() {
-        //TODO skal denne bruges? - evt. laves om
-        return "Car{" +
-                "registrationNumber='" + registrationNumber + '\'' +
-                ", brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", fuelType='" + fuelType + '\'' +
-                ", odometer=" + odometer +
-                ", registrationDate=" + registrationDate +
-                ", type=" + type +
-                '}';
+        //TODO TEST ME Mathias & Emil thoughts???
+
+        return String.format("|Registration number    |Brand    |Model    |Fuel type    |Odometer at start    " +
+                "|Registration date    |Type\n|%-23s|%-9s|%-9s|%-13s|%-21s|%-21s\n", registrationNumber, brand, model,
+                fuelType, odometer, registrationDate, type.toString());
+//        return "Car{" +
+//                "registrationNumber='" + registrationNumber + '\'' +
+//                ", brand='" + brand + '\'' +
+//                ", model='" + model + '\'' +
+//                ", fuelType='" + fuelType + '\'' +
+//                ", odometer=" + odometer +
+//                ", registrationDate=" + registrationDate +
+//                ", type=" + type +
+//                '}';
     }
 }
 

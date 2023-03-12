@@ -72,7 +72,7 @@ public class Contract extends UserInput {
 //        System.out.println("DEBUG: Contract was successfully added to the database :)");
     }
 
-//    public String getUpdateContractQuery(Contract contract) {
+//    public String getUpdateContractQuery(Contract contract) {  //TODO: Mangler den her???
 //        //query nedenunder opdaterer en contract baseret på registration_number
 //        String query = "UPDATE car SET brand = \'" + car.getBrand() + "\', model = \'" + car.getModel() +
 //                "\', fuel_type = \'" + car.getFuelType() + "\', odometer = " + car.getOdometer() +
@@ -94,6 +94,26 @@ public class Contract extends UserInput {
 
     private void editContract() {
         //TODO UPDATE Laurits Yoink
+        boolean contractIDDoesNotExist = true;
+        String tempRegNum = stringIn("Please type the driver license number of the renter you want to edit: ");
+        for (int i = 0; i < contracts.size(); i++) {
+            if (contracts.get(i).getDriverLicenseNumber().equals(tempRegNum)) {
+                contractIDDoesNotExist = false;
+                //Edit renter
+                contracts.get(i).setRegistrationNumber(stringIn("Write the registration number of the car")); //TODO check if reg num exist
+                contracts.get(i).setDriverLicenseNumber(stringIn("write the license number of the driver")); //TODO check if renter with given license exist
+                contracts.get(i).setFromDateTime(dateIn("Write the starting time of contract"));
+                contracts.get(i).setToDateTime(dateIn("Write the end time of the contract"));
+                contracts.get(i).setOdometerAtStart(intIn("Write the odometer number on the given car "));
+                //sqlHandler.executeUpdate(getUpdateContractQuery(contracts.get(i))); //FIXME: Method missing??
+                System.out.println("Renter has been updated <3\n");
+            }
+        }
+        if (contractIDDoesNotExist) {
+            System.out.println("Driver license number does not exist\n");
+            //FIXME Should this loop and ask again or is this fine? Goes back to renter menu
+        }
+
     }
 
     private void deleteContract() {

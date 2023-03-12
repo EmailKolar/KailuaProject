@@ -78,8 +78,29 @@ public class Renter extends UserInput {
     }
 
     private void editRenter() {
-        //TODO Laurits Yoink
-
+        //TODO Laurits Yoink  FIXME: This messages always appears at the end:
+        // "The given driver license number already exist. please try again"
+        boolean driverLicenseNumberDoesNotExist = true;
+        String tempRegNum = stringIn("Please type the driver license number of the renter you want to edit: ");
+        for (int i = 0; i < renters.size(); i++) {
+            if (renters.get(i).getDriverLicenseNumber().equals(tempRegNum)) {
+                driverLicenseNumberDoesNotExist = false;
+                //Edit renter
+                renters.get(i).setName(stringIn("Write the full name of the renter: "));
+                renters.get(i).setAddress(stringIn("Write the address of the renter (Street + number): "));
+                renters.get(i).setZip(stringIn("Write the zip code of the renter: "));
+                renters.get(i).setCity(stringIn("Write the city of the renter: "));
+                renters.get(i).setMobilePhone(stringIn("Write the mobile phone number of the renter: "));
+                renters.get(i).setPhone(stringIn("Write the phone number of the renter (Press enter if renter does not have one): "));
+                renters.get(i).setEmail(stringIn("Write the email address of the renter: "));
+                sqlHandler.executeUpdate(getUpdateRenterQuery(renters.get(i)));
+                System.out.println("Renter has been updated <3\n");
+            }
+        }
+        if (driverLicenseNumberDoesNotExist) {
+            System.out.println("Driver license number does not exist\n");
+            //FIXME Should this loop and ask again or is this fine? Goes back to renter menu
+        }
     }
 
     public String getUpdateRenterQuery(Renter renter) {  //TODO TEST ME
