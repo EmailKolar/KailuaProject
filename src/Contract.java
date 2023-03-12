@@ -155,8 +155,9 @@ public class Contract extends UserInput {
 
 
     public void contractSearch() {
-        System.out.println("Search param broooo");
-        String userInput = stringIn("Enter param: ");
+        System.out.println("You can search by contractID, From Date, To Date, Driver License Num, Reg. Num or " +
+                "Odometer At Start");
+        String userInput = stringIn("Enter search parameter: ");
         for (Contract contract : contracts) {
             if (userInput.equals(contract.getContractID())){
                 System.out.println(contract);

@@ -22,7 +22,7 @@ public class Renter extends UserInput {
 
     public Renter(String driverLicenseNumber, String name, String address,
                   String zip, String city, String mobilePhone, String phone, String email) {
-        setDriverLicenseNumber(driverLicenseNumber);
+        this.driverLicenseNumber = driverLicenseNumber;
         setName(name);
         setAddress(address);
         setZip(zip);
@@ -145,10 +145,43 @@ public class Renter extends UserInput {
 
     private void viewAllRenters() {
         //TODO Pæn formatering Emil yoink
+
+        System.out.println("DRV.LSC.NUM   NAME                       ADDRESS                    ZIP   CITY" +
+                "                     PHONE     M.NUM     EMAIL");
+
+        for(Renter renter : renters){
+            System.out.println(renter);
+        }
     }
 
     public void renterSearch(){
-        //TODO Emil yoink
+        //TODO Emil yoink --- Umiddelbart færdig
+        System.out.println("You can search by Driver license num, Name, Address, Zip, City, Phone number or Email");
+        String userInput = stringIn("Enter search parameter: ");
+
+        for(Renter renter : renters){
+            if(userInput.equals(renter.getDriverLicenseNumber())){
+                System.out.println(renter);
+            } else if (userInput.equals(renter.getName())) {
+                System.out.println(renter);
+            }else if (userInput.equals(renter.getAddress())) {
+                System.out.println(renter);
+            }else if (userInput.equals(renter.getZip())) {
+                System.out.println(renter);
+            }else if (userInput.equals(renter.getCity())) {
+                System.out.println(renter);
+            }else if (userInput.equals(renter.getPhone())) {
+                System.out.println(renter);
+            }else if (userInput.equals(renter.getMobilePhone())) {
+                System.out.println(renter);
+            }else if (userInput.equals(renter.getEmail())) {
+                System.out.println(renter);
+            }
+
+
+        }
+
+
     }
 
     public int readMenuChoice() {
@@ -167,11 +200,12 @@ public class Renter extends UserInput {
         for (int i = 0; i < renters.size(); i++) {
             if (renters.get(i).getDriverLicenseNumber().equals(driverLicenseNumber)) {
                 numberExist = true;
+                break;
             }
         }
         if (!numberExist){
             this.driverLicenseNumber = driverLicenseNumber;
-        }else{
+        }else {
             setDriverLicenseNumber(stringIn("The given driver license number already exist. please try again"));
         }
     }
@@ -242,15 +276,7 @@ public class Renter extends UserInput {
 
     @Override
     public String toString() {
-        return "Renter{" +
-                ", driverLicenseNumber='" + driverLicenseNumber + '\'' +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", zip='" + zip + '\'' +
-                ", city='" + city + '\'' +
-                ", mobilePhone='" + mobilePhone + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return String.format("%-13s %-26s %-26s %-5s %-24s %-9s %-9s %s ",
+                driverLicenseNumber,name,address,zip,city,mobilePhone,phone,email);
     }
 }
