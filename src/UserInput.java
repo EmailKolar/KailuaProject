@@ -1,6 +1,6 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class UserInput {
@@ -25,8 +25,23 @@ public class UserInput {
         System.out.println("Use the following format: \"yyyy-mm-dd\"");
         String date = in.next();
         in.nextLine();
-        //TODO check for correct formatting 'yyyy-mm-dd' Mathias YOink
+        //TODO check for correct formatting 'yyyy-mm-dd' Mathias YOink TEST MIG :)))
+        isValidDate(date);
+
         return date;
+    }
+    private String isValidDate(String date){
+        String dateFormat = "yyyy-MM-dd";
+        DateTimeFormatter dateChecker = DateTimeFormatter.ofPattern(dateFormat);
+        LocalDate dateTemp = null;
+        try {
+            dateTemp = LocalDate.parse(date,dateChecker);
+        }catch (DateTimeException e){
+            dateIn("The given date is not valid - Try again");
+        }
+        //System.out.println("DEBUG before : " + date);
+        //System.out.println("DEBUG after : " + dateTemp);
+        return String.valueOf(dateTemp);
     }
 
     public Type typeIn(String message) {
