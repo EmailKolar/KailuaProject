@@ -12,7 +12,7 @@ public class Contract extends UserInput {
     private String registrationNumber;
     private int odometerAtStart;
 
-    private ArrayList<Contract> contracts = new ArrayList<>();
+    private ArrayList<Contract> contracts = new ArrayList<>(); //TODO gøre static?
     private static SQLHandler sqlHandler = new SQLHandler();
 
     public Contract(String contractID, String fromDateTime, String toDateTime, String driverLicenseNumber,
