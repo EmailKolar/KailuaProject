@@ -66,7 +66,6 @@ public class Contract extends UserInput {
         contractTemp.setFromDateTime(dateIn("Write the starting time of contract"));
         contractTemp.setToDateTime(dateIn("Write the end time of the contract"));
         contractTemp.setOdometerAtStart(intIn("Write the odometer number on the given car "));
-        //TODO nice to have oven over ^ set odometer automatisk based on given car reg num
 
         System.out.println("DEBUG" + contractTemp);
         sqlHandler.executeUpdate(getInsertContractQuery(contractTemp));

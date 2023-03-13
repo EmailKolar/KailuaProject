@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    SQLHandler sqlHandler = new SQLHandler();
     Scanner scanner = new Scanner(System.in);
     Car car = new Car();
     Renter renter = new Renter();
@@ -13,12 +12,6 @@ public class Main {
     }
 
     void run() {
-        //4 lines below is test code for carList and editing of car object
-        //sqlHandler.generateCarList();
-        //ArrayList<Car> cars = car.getCars();
-        //cars.get(0).setBrand("Porsche");
-        //sqlHandler.executeUpdate(car.getNewCarQuery(cars.get(0)));
-
         menu();
     }
 
