@@ -177,11 +177,7 @@ public class Renter extends UserInput {
             }else if (userInput.equals(renter.getEmail())) {
                 System.out.println(renter);
             }
-
-
         }
-
-
     }
 
     public int readMenuChoice() {

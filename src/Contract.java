@@ -72,16 +72,18 @@ public class Contract extends UserInput {
         System.out.println("DEBUG: Contract was successfully added to the database :)");
     }
 
-//    public String getUpdateContractQuery(Contract contract) { //TODO fix?
-//        //query nedenunder opdaterer en contract baseret på registration_number
-//        String query = "UPDATE car SET brand = \'" + car.getBrand() + "\', model = \'" + car.getModel() +
-//                "\', fuel_type = \'" + car.getFuelType() + "\', odometer = " + car.getOdometer() +
-//                ", first_registration_mon_yr = \'" + car.getRegistrationDate() + "\', rental_type = \'" +
-//                car.getType() + "\' WHERE registration_number = \'" + car.getRegistrationNumber() + "\'";
-//        //System.out.println(query); //For debugging
-//        return query;
-//    }
-//
+    public String getUpdateContractQuery(Contract contract) { //TODO fix?
+        //query nedenunder opdaterer en contract baseret på contract_id
+        String query = "UPDATE contract SET from_date_time = \'" + contract.getFromDateTime() +
+                "\', to_date_time = \'" + contract.getToDateTime() +
+                "\', driver_license_number = \'" + contract.getDriverLicenseNumber()
+                + "\', registration_number = " + contract.getRegistrationNumber() +
+                ", odometer_at_start = \'" + contract.getOdometerAtStart() + "\'" +
+                 " WHERE contract_id = \'" + contract.contractID + "\'";
+        //System.out.println(query); //For debugging
+        return query;
+    }
+
     public String getInsertContractQuery(Contract contract) {
         //query nedenunder indsætter en ny contract ind i databasen.
         String query = "INSERT INTO contract VALUES (null, \'" +  contract.getFromDateTime() +"\', " +
