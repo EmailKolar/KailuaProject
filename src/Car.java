@@ -115,7 +115,7 @@ public class Car extends UserInput {
     public String getInsertCarQuery(Car car) {
         //query nedenunder indsætter en ny bil ind i databasen.
         String query = "INSERT INTO car VALUES " +
-                "(" + car.getRegistrationNumber() + ", \'" + car.getBrand() +
+                "(\'" + car.getRegistrationNumber() + "\', \'" + car.getBrand() +
                 "\', \'" + car.getModel() + "\', \'" + car.getFuelType() + "\', " +
                 car.getOdometer() + ", \'" + car.getRegistrationDate() +
                 "\', \'" + car.getType() + "\')";
