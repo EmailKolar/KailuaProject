@@ -33,9 +33,6 @@ public class Car extends UserInput {
     public void carMenu() {
         boolean isRunning = true;
 
-
-        //reRun carList - Er loading time for lang? - kræver det for meget af computeren at køre generateCarList() hver gang?
-
         while (isRunning) {
             sqlHandler.generateCarList();
             printCarMenu();
@@ -52,19 +49,21 @@ public class Car extends UserInput {
     }
 
     private void editCar() {
-        //TODO Laurits Yoink DONE BUT TEST ME AGAIN
-
+        //TODO TEST ME
         boolean registrationNumberDoesNotExist = true;
-        //What car do you want to edit? By registration number perhaps
+
+        //Chooses car to edit by typing registration number
         String tempRegNum = stringIn("Please type the registration number of the car you want to edit: ");
         for (int i = 0; i < cars.size(); i++) {
             if (cars.get(i).getRegistrationNumber().equals(tempRegNum)) {
                 registrationNumberDoesNotExist = false;
+                //Prints car they want to edit
+                System.out.println("\nThis is the car you've chosen to edit:\n" + cars.get(i));
+
                 //Edit car
-                //cars.get(i).setRegistrationNumber(stringIn("Write the registration number of the car: "));
                 cars.get(i).setBrand(stringIn("Write the brand of the car: "));
                 cars.get(i).setModel(stringIn("Write the model of the car: "));
-                cars.get(i).setFuelType(stringIn("Write the fuel type of the car: ")); //TODO skal vi bruge enum som fuel type?
+                cars.get(i).setFuelType(stringIn("Write the fuel type of the car: "));
                 cars.get(i).setOdometer(intIn("How many km. has the car driven: "));
                 cars.get(i).setType(typeIn("What type of car is it"));
                 cars.get(i).setRegistrationDate(dateIn("Write the registration Date of the car"));
@@ -74,7 +73,6 @@ public class Car extends UserInput {
         }
         if (registrationNumberDoesNotExist) {
             System.out.println("Registration number does not exist\n");
-            //FIXME Should this loop and ask again or is this fine? Goes back to car menu
         }
         //Then update each element? Or choose specific element to update?
 
