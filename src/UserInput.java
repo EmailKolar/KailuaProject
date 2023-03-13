@@ -15,7 +15,7 @@ public class UserInput {
     public int intIn(String message) {
         System.out.println(message);
         int num = in.nextInt();
-        //in.nextLine(); //TODO TEST ME SCANNER BUG?
+        in.nextLine();
         return num;
     }
 
@@ -26,7 +26,7 @@ public class UserInput {
         boolean isValid;
         do {
             System.out.println("Use the following format: \"yyyy-mm-dd\"");
-            date = in.next();
+            date = in.nextLine();
             isValid = isValidDate(date);
         }while (!isValid);
         return date;
