@@ -67,9 +67,9 @@ public class Contract extends UserInput {
         contractTemp.setToDateTime(dateIn("Write the end time of the contract"));
         contractTemp.setOdometerAtStart(intIn("Write the odometer number on the given car "));
 
-        System.out.println("DEBUG" + contractTemp);
+        //System.out.println("DEBUG" + contractTemp);
         sqlHandler.executeUpdate(getInsertContractQuery(contractTemp));
-        System.out.println("DEBUG: Contract was successfully added to the database :)");
+        System.out.println("Contract was successfully added to the database");
     }
 
     public String getUpdateContractQuery(Contract contract) { //TODO fix?
@@ -88,7 +88,7 @@ public class Contract extends UserInput {
         //query nedenunder indsætter en ny contract ind i databasen.
         String query = "INSERT INTO contract VALUES (null, \'" +  contract.getFromDateTime() +"\', " +
                 "\'" + contract.driverLicenseNumber +"\', \'" + contract.getRegistrationNumber() +"\', " +
-                "\'" + contract.getToDateTime() +"\', \'" + contract.getOdometerAtStart();
+                "\'" + contract.getToDateTime() +"\', " + contract.getOdometerAtStart() + ");";
         //System.out.println(query); //For debugging
         return query;
     }
@@ -120,16 +120,14 @@ public class Contract extends UserInput {
     }
 
     @Override
-    public String toString() {
+    public String toString() { //TODO fix so no overflow meme - slet cont
         return "Contract{" +
-                "scanner=" + scanner +
                 ", contractID='" + contractID + '\'' +
                 ", fromDateTime='" + fromDateTime + '\'' +
                 ", toDateTime='" + toDateTime + '\'' +
                 ", driverLicenseNumber='" + driverLicenseNumber + '\'' +
                 ", registrationNumber='" + registrationNumber + '\'' +
                 ", odometerAtStart=" + odometerAtStart +
-                ", contracts=" + contracts +
                 '}';
     }
 

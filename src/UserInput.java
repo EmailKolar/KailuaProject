@@ -22,26 +22,30 @@ public class UserInput {
 
     public String dateIn(String message) {
         System.out.println(message);
-        System.out.println("Use the following format: \"yyyy-mm-dd\"");
-        String date = in.next();
-        in.nextLine();
         //TODO check for correct formatting 'yyyy-mm-dd' Mathias YOink TEST MIG :))) TEST ME
-        isValidDate(date);
-
+        String date;
+        boolean tis;
+        do {
+            System.out.println("Use the following format: \"yyyy-mm-dd\"");
+            date = in.next();
+            tis = isValidDate(date);
+        }while (!tis);
         return date;
     }
-    private String isValidDate(String date){
+    private boolean isValidDate(String date){
         String dateFormat = "yyyy-MM-dd";
         DateTimeFormatter dateChecker = DateTimeFormatter.ofPattern(dateFormat);
         LocalDate dateTemp = null;
         try {
             dateTemp = LocalDate.parse(date,dateChecker);
+            return true;
         }catch (DateTimeException e){
-            dateIn("The given date is not valid - Try again");
+            //dateIn("The given date is not valid - Try again");
+            return false;
         }
         //System.out.println("DEBUG before : " + date);
         //System.out.println("DEBUG after : " + dateTemp);
-        return String.valueOf(dateTemp);
+        //return String.valueOf(dateTemp);
     }
 
     public Type typeIn(String message) {
