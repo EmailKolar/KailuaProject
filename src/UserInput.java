@@ -21,7 +21,7 @@ public class UserInput {
 
     public String dateIn(String message) {
         System.out.println(message);
-        //TODO check for correct formatting 'yyyy-mm-dd' TEST ME
+
         String date;
         boolean isValid;
         do {
@@ -31,7 +31,7 @@ public class UserInput {
         }while (!isValid);
         return date;
     }
-    private boolean isValidDate(String date){  //TODO TEST ME
+    private boolean isValidDate(String date){
         String dateFormat = "yyyy-MM-dd";
         DateTimeFormatter dateChecker = DateTimeFormatter.ofPattern(dateFormat);
         LocalDate dateTemp = null;

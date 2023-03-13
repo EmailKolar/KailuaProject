@@ -76,9 +76,9 @@ public class Contract extends UserInput {
         //query nedenunder opdaterer en contract baseret på contract_id
         String query = "UPDATE contract SET from_date_time = \'" + contract.getFromDateTime() +
                 "\', to_date_time = \'" + contract.getToDateTime() +
-                "\', driver_license_number = \'" + contract.getDriverLicenseNumber()
-                + "\', registration_number = " + contract.getRegistrationNumber() +
-                ", odometer_at_start = \'" + contract.getOdometerAtStart() + "\'" +
+                "\', driver_license_number = " + contract.getDriverLicenseNumber()
+                + ", registration_number = \'" + contract.getRegistrationNumber() +
+                "\', odometer_at_start = \'" + contract.getOdometerAtStart() + "\'" +
                  " WHERE contract_id = \'" + contract.contractID + "\'";
         //System.out.println(query); //For debugging
         return query;
@@ -108,7 +108,7 @@ public class Contract extends UserInput {
                 contract.setToDateTime(dateIn("Write the end time of the contract"));
                 contract.setOdometerAtStart(intIn("Write the odometer number on the given car "));
                 sqlHandler.executeUpdate(getUpdateContractQuery(contract));
-                System.out.println("Renter has been updated <3\n");
+                System.out.println("Contract has been updated <3\n");
             }
         }
 
@@ -153,7 +153,8 @@ public class Contract extends UserInput {
 
 
     public void contractSearch() {
-        System.out.println("Search param broooo");
+        System.out.println("You can search by writing: a contractId, FromDate, ToDate, license number," +
+                " registration number or odometer number");
         String userInput = stringIn("Enter param: ");
         for (Contract contract : contracts) {
             if (userInput.equals(contract.getContractID())){
