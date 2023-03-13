@@ -25,7 +25,7 @@ public class UserInput {
         System.out.println("Use the following format: \"yyyy-mm-dd\"");
         String date = in.next();
         in.nextLine();
-        //TODO check for correct formatting 'yyyy-mm-dd' Mathias YOink TEST MIG :)))
+        //TODO check for correct formatting 'yyyy-mm-dd' Mathias YOink TEST MIG :))) TEST ME
         isValidDate(date);
 
         return date;

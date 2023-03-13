@@ -62,7 +62,7 @@ public class Renter extends UserInput {
     private void registerRenter() {
         //TODO TEST ME
         Renter renterTemp = new Renter();
-        //TODO If driver license number already exists write message? - Mathias
+        //TODO If driver license number already exists write message? - Mathias TEST ME
         renterTemp.setDriverLicenseNumber(stringIn("Write the driver license number of the renter (8 characters): "));
         renterTemp.setName(stringIn("Write the full name of the renter: "));
         renterTemp.setAddress(stringIn("Write the address of the renter (Street + number): "));
@@ -78,8 +78,6 @@ public class Renter extends UserInput {
     }
 
     private void editRenter() {
-        //TODO Laurits Yoink  FIXME: This messages always appears at the end:
-        // "The given driver license number already exist. please try again"
         boolean driverLicenseNumberDoesNotExist = true;
         String tempRegNum = stringIn("Please type the driver license number of the renter you want to edit: ");
         for (int i = 0; i < renters.size(); i++) {
@@ -99,7 +97,6 @@ public class Renter extends UserInput {
         }
         if (driverLicenseNumberDoesNotExist) {
             System.out.println("Driver license number does not exist\n");
-            //FIXME Should this loop and ask again or is this fine? Goes back to renter menu
         }
     }
 
@@ -144,8 +141,6 @@ public class Renter extends UserInput {
     }
 
     private void viewAllRenters() {
-        //TODO Pæn formatering Emil yoink
-
         System.out.println("DRV.LSC.NUM   NAME                       ADDRESS                    ZIP   CITY" +
                 "                     PHONE     M.NUM     EMAIL");
 
@@ -155,7 +150,7 @@ public class Renter extends UserInput {
     }
 
     public void renterSearch(){
-        //TODO Emil yoink --- Umiddelbart færdig
+        //TODO TEST ME
         System.out.println("You can search by Driver license num, Name, Address, Zip, City, Phone number or Email");
         String userInput = stringIn("Enter search parameter: ");
 
@@ -191,9 +186,9 @@ public class Renter extends UserInput {
         return driverLicenseNumber;
     }
 
-    public void setDriverLicenseNumber(String driverLicenseNumber) { //TODO fix - den første sammenligner første med første
+    public void setDriverLicenseNumber(String driverLicenseNumber) {
         boolean numberExist = false;
-        //TODO IF renter == null;
+
         for (int i = 0; i < renters.size(); i++) {
             if (renters.get(i).getDriverLicenseNumber().equals(driverLicenseNumber)) {
                 numberExist = true;
@@ -202,7 +197,7 @@ public class Renter extends UserInput {
         }
         if (!numberExist){
             this.driverLicenseNumber = driverLicenseNumber;
-        }else {
+        } else {
             setDriverLicenseNumber(stringIn("The given driver license number already exist. please try again"));
         }
     }
@@ -261,10 +256,6 @@ public class Renter extends UserInput {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public ArrayList<Renter> getRenters() {
-        return renters;
     }
 
     public void addRenterToList(Renter renter) {

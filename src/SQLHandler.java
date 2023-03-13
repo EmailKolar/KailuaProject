@@ -90,26 +90,3 @@ public class SQLHandler {
 
     }
 }
-
-
-//GRAVEYARD RIP PRINT F
-//public void printRenter(String sql) {
-//        try {
-//            ResultSet rs = getRS(sql);
-//            if (rs != null) {
-//                System.out.printf("%-13S %-28S %-30S %-6S %-28S %-6S %-10S %S",
-//                        "Dr. Lcs. Num", "Name", "Address", "Zip", "City", "M. Phone", "Phone", "Email");
-//                System.out.println();
-//                while (rs.next()) {
-//                    System.out.printf("%-13s %-28s %-30s %-6s %-28s %-6s %-10s %s", rs.getString(1)
-//                            , rs.getString(2), rs.getString(3), rs.getString(4)
-//                            , rs.getString(5), rs.getString(6), rs.getString(7),
-//                            rs.getString(8));
-//                    System.out.println();
-//                }
-//            }
-//        } catch (SQLException e) {
-//            System.out.println("SQLException: " + e.getMessage());
-//            System.exit(1);
-//        }
-//    }
