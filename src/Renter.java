@@ -63,7 +63,6 @@ public class Renter extends UserInput {
     private void registerRenter() {
         //TODO TEST ME
         Renter renterTemp = new Renter();
-        //TODO If driver license number already exists write message? - Mathias TEST ME
         renterTemp.setDriverLicenseNumber(stringIn("Write the driver license number of the renter (8 characters): "));
         renterTemp.setName(stringIn("Write the full name of the renter: "));
         renterTemp.setAddress(stringIn("Write the address of the renter (Street + number): "));
@@ -114,14 +113,14 @@ public class Renter extends UserInput {
         return query;
     }
 
-    public String getInsertRenterQuery(Renter renter) { //TODO TEST ME
+    public String getInsertRenterQuery(Renter renter) {
         //query nedenunder indsætter en ny renter ind i databasen.
         String query = "INSERT INTO renter VALUES " +
                 "(\'" + renter.getDriverLicenseNumber() + "\', \'" + renter.getName() +
                 "\', \'" + renter.getAddress() + "\', \'" + renter.zip + "\', \'" +
                 renter.city + "\', \'" + renter.getMobilePhone() +
                 "\', \'" + renter.getPhone() + "\', \'" + renter.getEmail() + "\')";
-        System.out.println(query); //For debugging
+        //System.out.println(query); //For debugging
         return query;
     }
 
@@ -151,7 +150,6 @@ public class Renter extends UserInput {
     }
 
     public void renterSearch(){
-        //TODO TEST ME
         System.out.println("You can search by Driver license num, Name, Address, Zip, City, Phone number or Email");
         String userInput = stringIn("Enter search parameter: ");
 

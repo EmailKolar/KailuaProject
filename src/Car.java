@@ -226,10 +226,6 @@ public class Car extends UserInput {
         return type;
     }
 
-    public ArrayList<Car> getCars() {
-        return cars;
-    }
-
     public void addCarToList(Car car) {
         cars.add(car);
     }

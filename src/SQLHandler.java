@@ -55,7 +55,6 @@ public class SQLHandler {
 
 
     public void generateCarList() {
-
         try {
             ResultSet rs = getRS("SELECT * FROM kailua.car");
             if (rs != null) {

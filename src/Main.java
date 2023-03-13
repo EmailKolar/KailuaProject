@@ -15,7 +15,6 @@ public class Main {
         menu();
     }
 
-
     public void menu() {
         boolean isRunning = true;
 
