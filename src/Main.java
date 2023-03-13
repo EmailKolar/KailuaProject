@@ -11,7 +11,7 @@ public class Main {
         new Main().run();
     }
 
-    void run() {
+    private void run() {
         menu();
     }
 

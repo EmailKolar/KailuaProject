@@ -49,16 +49,16 @@ public class Car extends UserInput {
     }
 
     private void editCar() {
-        //TODO Laurits Yoink DONE BUT TEST ME AGAIN
-
+        //TODO TEST ME
         boolean registrationNumberDoesNotExist = true;
-        //What car do you want to edit? By registration number perhaps
+        //User types the registration number of the car they want to edit
         String tempRegNum = stringIn("Please type the registration number of the car you want to edit: ");
         for (int i = 0; i < cars.size(); i++) {
             if (cars.get(i).getRegistrationNumber().equals(tempRegNum)) {
+                System.out.println(cars.get(i));
                 registrationNumberDoesNotExist = false;
+
                 //Edit car
-                //cars.get(i).setRegistrationNumber(stringIn("Write the registration number of the car: "));
                 cars.get(i).setBrand(stringIn("Write the brand of the car: "));
                 cars.get(i).setModel(stringIn("Write the model of the car: "));
                 cars.get(i).setFuelType(stringIn("Write the fuel type of the car: "));
@@ -71,7 +71,6 @@ public class Car extends UserInput {
         }
         if (registrationNumberDoesNotExist) {
             System.out.println("Registration number does not exist\n");
-            //FIXME Should this loop and ask again or is this fine? Goes back to car menu
         }
     }
 
@@ -112,7 +111,7 @@ public class Car extends UserInput {
     public String getInsertCarQuery(Car car) {
         //query nedenunder indsætter en ny bil ind i databasen.
         String query = "INSERT INTO car VALUES " +
-                "(" + car.getRegistrationNumber() + ", \'" + car.getBrand() +
+                "(\'" + car.getRegistrationNumber() + "\', \'" + car.getBrand() +
                 "\', \'" + car.getModel() + "\', \'" + car.getFuelType() + "\', " +
                 car.getOdometer() + ", \'" + car.getRegistrationDate() +
                 "\', \'" + car.getType() + "\')";
@@ -238,8 +237,8 @@ public class Car extends UserInput {
     @Override
     public String toString() {
         return String.format("|Registration number    |Brand    |Model    |Fuel type    |Odometer at start    " +
-                "|Registration date    |Type\n|%-23s|%-9s|%-9s|%-13s|%-21s|%-21s\n", registrationNumber, brand, model,
-                fuelType, odometer, registrationDate, type.toString());
+                "|Registration date    |Type\n|%-23s|%-9s|%-9s|%-13s|%-21s|%-21s|%s\n", registrationNumber, brand, model,
+                fuelType, odometer, registrationDate, type);
     }
 }
 

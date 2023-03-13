@@ -9,8 +9,8 @@ public class SQLHandler {
     Renter renter = new Renter();
     Contract contract = new Contract();
 
-    public static final String database_url = "jdbc:mysql://localhost:3306/kailua";
-    public static java.sql.Connection con;
+    private static final String database_url = "jdbc:mysql://localhost:3306/kailua";
+    private static java.sql.Connection con;
 
 
     public ResultSet getRS(String sql) {
@@ -37,7 +37,7 @@ public class SQLHandler {
     }
 
     public void generateContractList() {
-        String query = "SELECT * FROM renter";
+        String query = "SELECT * FROM contract";
         try {
             ResultSet rs = getRS(query);
             if (rs != null) {
