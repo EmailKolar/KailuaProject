@@ -102,15 +102,16 @@ public class Contract extends UserInput {
             if (contracts.get(i).getDriverLicenseNumber().equals(tempRegNum)) {
                 contractIDDoesNotExist = false;
                 //Edit renter
-                contracts.get(i).setRegistrationNumber(stringIn("Write the registration number of the car")); //TODO check if reg num exist
-                contracts.get(i).setDriverLicenseNumber(stringIn("write the license number of the driver")); //TODO check if renter with given license exist
-                contracts.get(i).setFromDateTime(dateIn("Write the starting time of contract"));
-                contracts.get(i).setToDateTime(dateIn("Write the end time of the contract"));
-                contracts.get(i).setOdometerAtStart(intIn("Write the odometer number on the given car "));
-                //sqlHandler.executeUpdate(getUpdateContractQuery(contracts.get(i))); //FIXME: Method missing??
+                contract.setRegistrationNumber(stringIn("Write the registration number of the car"));
+                contract.setDriverLicenseNumber(stringIn("write the license number of the driver"));
+                contract.setFromDateTime(dateIn("Write the starting time of contract"));
+                contract.setToDateTime(dateIn("Write the end time of the contract"));
+                contract.setOdometerAtStart(intIn("Write the odometer number on the given car "));
+                sqlHandler.executeUpdate(getUpdateContractQuery(contract));
                 System.out.println("Renter has been updated <3\n");
             }
         }
+
         if (contractIDDoesNotExist) {
             System.out.println("Driver license number does not exist\n");
             //FIXME Should this loop and ask again or is this fine? Goes back to renter menu
@@ -136,19 +137,17 @@ public class Contract extends UserInput {
     }
 
     private void viewAllContracts() {
-        //TODO for loop print arraylist ud (formater toString så det er pænt) Laurits Yoink
+        System.out.println("ContractID   FromDate      ToDate       Driver lcs.       Reg. num.    Odometer at start");
+        for(Contract contract : contracts){
+            System.out.println(contract);
+        }
     }
 
     @Override
-    public String toString() { //TODO fix so no overflow meme - slet cont
-        return "Contract{" +
-                ", contractID='" + contractID + '\'' +
-                ", fromDateTime='" + fromDateTime + '\'' +
-                ", toDateTime='" + toDateTime + '\'' +
-                ", driverLicenseNumber='" + driverLicenseNumber + '\'' +
-                ", registrationNumber='" + registrationNumber + '\'' +
-                ", odometerAtStart=" + odometerAtStart +
-                '}';
+    public String toString() {
+
+        return String.format("%-12s %-13s %-12s %-17s %-12s %s",
+                contractID,fromDateTime,toDateTime,driverLicenseNumber,registrationNumber,odometerAtStart);
     }
 
 

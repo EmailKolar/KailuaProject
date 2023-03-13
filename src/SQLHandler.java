@@ -37,7 +37,7 @@ public class SQLHandler {
     }
 
     public void generateContractList() {
-        String query = "SELECT * FROM renter";
+        String query = "SELECT * FROM contract";
         try {
             ResultSet rs = getRS(query);
             if (rs != null) {

@@ -49,8 +49,7 @@ public class Car extends UserInput {
     }
 
     private void editCar() {
-        //TODO Laurits Yoink DONE BUT TEST ME AGAIN
-
+        //TODO TEST ME
         boolean registrationNumberDoesNotExist = true;
         //What car do you want to edit? By registration number perhaps
         String tempRegNum = stringIn("Please type the registration number of the car you want to edit: ");
@@ -112,7 +111,7 @@ public class Car extends UserInput {
     public String getInsertCarQuery(Car car) {
         //query nedenunder indsætter en ny bil ind i databasen.
         String query = "INSERT INTO car VALUES " +
-                "(" + car.getRegistrationNumber() + ", \'" + car.getBrand() +
+                "(\'" + car.getRegistrationNumber() + "\', \'" + car.getBrand() +
                 "\', \'" + car.getModel() + "\', \'" + car.getFuelType() + "\', " +
                 car.getOdometer() + ", \'" + car.getRegistrationDate() +
                 "\', \'" + car.getType() + "\')";
@@ -238,8 +237,8 @@ public class Car extends UserInput {
     @Override
     public String toString() {
         return String.format("|Registration number    |Brand    |Model    |Fuel type    |Odometer at start    " +
-                "|Registration date    |Type\n|%-23s|%-9s|%-9s|%-13s|%-21s|%-21s\n", registrationNumber, brand, model,
-                fuelType, odometer, registrationDate, type.toString());
+                "|Registration date    |Type\n|%-23s|%-9s|%-9s|%-13s|%-21s|%-21s|%s\n", registrationNumber, brand, model,
+                fuelType, odometer, registrationDate, type);
     }
 }
 
