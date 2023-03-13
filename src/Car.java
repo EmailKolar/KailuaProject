@@ -49,7 +49,6 @@ public class Car extends UserInput {
     }
 
     private void editCar() {
-        //TODO TEST ME
         boolean registrationNumberDoesNotExist = true;
         //User types the registration number of the car they want to edit
         String tempRegNum = stringIn("Please type the registration number of the car you want to edit: ");

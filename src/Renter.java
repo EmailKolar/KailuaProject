@@ -61,7 +61,6 @@ public class Renter extends UserInput {
     }
 
     private void registerRenter() {
-        //TODO TEST ME
         Renter renterTemp = new Renter();
         renterTemp.setDriverLicenseNumber(stringIn("Write the driver license number of the renter (8 characters): "));
         renterTemp.setName(stringIn("Write the full name of the renter: "));
@@ -72,9 +71,9 @@ public class Renter extends UserInput {
         renterTemp.setPhone(stringIn("Write the phone number of the renter (Press enter if renter does not have one): "));
         renterTemp.setEmail(stringIn("Write the email address of the renter: "));
 
-        System.out.println("DEBUG" + renterTemp);
+        //System.out.println("DEBUG" + renterTemp);
         sqlHandler.executeUpdate(getInsertRenterQuery(renterTemp));
-        System.out.println("DEBUG: Renter was successfully added to the database :)");
+        System.out.println("Renter was successfully added to the database :)\n");
     }
 
     private void editRenter() {
@@ -100,7 +99,7 @@ public class Renter extends UserInput {
         }
     }
 
-    public String getUpdateRenterQuery(Renter renter) {  //TODO TEST ME
+    public String getUpdateRenterQuery(Renter renter) {
         //query nedenunder opdatere en renter baseret på registration_number
         String query = "UPDATE renter SET driver_license_number = \'" + renter.getDriverLicenseNumber() +
                 "\', name = \'" + renter.getName() +

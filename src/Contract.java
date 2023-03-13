@@ -62,17 +62,17 @@ public class Contract extends UserInput {
     private void registerContract() {
         Contract contractTemp = new Contract();
         contractTemp.setRegistrationNumber(stringIn("Write the registration number of the car"));
-        contractTemp.setDriverLicenseNumber(stringIn("write the license number of the driver"));
+        contractTemp.setDriverLicenseNumber(stringIn("write the driver license number of the driver"));
         contractTemp.setFromDateTime(dateIn("Write the starting time of contract"));
         contractTemp.setToDateTime(dateIn("Write the end time of the contract"));
         contractTemp.setOdometerAtStart(intIn("Write the odometer number on the given car "));
 
         //System.out.println("DEBUG" + contractTemp);
         sqlHandler.executeUpdate(getInsertContractQuery(contractTemp));
-        System.out.println("Contract was successfully added to the database");
+        System.out.println("Contract was successfully added to the database\n");
     }
 
-    public String getUpdateContractQuery(Contract contract) { //TODO TEST ME
+    public String getUpdateContractQuery(Contract contract) {
         //query nedenunder opdaterer en contract baseret på contract_id
         String query = "UPDATE contract SET from_date_time = \'" + contract.getFromDateTime() +
                 "\', to_date_time = \'" + contract.getToDateTime() +
@@ -95,15 +95,14 @@ public class Contract extends UserInput {
 
 
     private void editContract() {
-        //TODO TEST ME
         boolean contractIDDoesNotExist = true;
-        String tempRegNum = stringIn("Please type the driver license number of the renter you want to edit: ");
+        String tempConID = stringIn("Please type the contract ID of the contract you want to edit: ");
         for (Contract contract : contracts) {
-            if (contract.getDriverLicenseNumber().equals(tempRegNum)) {
+            if (contract.getContractID().equals(tempConID)) {
                 contractIDDoesNotExist = false;
-                //Edit renter
+                //Edit contract
                 contract.setRegistrationNumber(stringIn("Write the registration number of the car"));
-                contract.setDriverLicenseNumber(stringIn("write the license number of the driver"));
+                contract.setDriverLicenseNumber(stringIn("write the driver license number of the driver"));
                 contract.setFromDateTime(dateIn("Write the starting time of contract"));
                 contract.setToDateTime(dateIn("Write the end time of the contract"));
                 contract.setOdometerAtStart(intIn("Write the odometer number on the given car "));
@@ -113,13 +112,12 @@ public class Contract extends UserInput {
         }
 
         if (contractIDDoesNotExist) {
-            System.out.println("Driver license number does not exist\n");
+            System.out.println("Contract ID does not exist\n");
         }
 
     }
 
     private void deleteContract() {
-        //TODO TEST ME
         boolean contractDoesNotExist = true;
         String tempContractID = stringIn("Please type the contract ID of the contract you want to delete: ");
         for (int i = 0; i < contracts.size(); i++) {
