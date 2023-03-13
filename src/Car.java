@@ -32,11 +32,8 @@ public class Car extends UserInput {
 
     public void carMenu() {
         boolean isRunning = true;
-
-
-        //reRun carList - Er loading time for lang? - kræver det for meget af computeren at køre generateCarList() hver gang?
-
         while (isRunning) {
+            cars = new ArrayList<>();
             sqlHandler.generateCarList();
             printCarMenu();
             int choice = readMenuChoice();
@@ -64,7 +61,7 @@ public class Car extends UserInput {
                 //cars.get(i).setRegistrationNumber(stringIn("Write the registration number of the car: "));
                 cars.get(i).setBrand(stringIn("Write the brand of the car: "));
                 cars.get(i).setModel(stringIn("Write the model of the car: "));
-                cars.get(i).setFuelType(stringIn("Write the fuel type of the car: ")); //TODO skal vi bruge enum som fuel type?
+                cars.get(i).setFuelType(stringIn("Write the fuel type of the car: "));
                 cars.get(i).setOdometer(intIn("How many km. has the car driven: "));
                 cars.get(i).setType(typeIn("What type of car is it"));
                 cars.get(i).setRegistrationDate(dateIn("Write the registration Date of the car"));

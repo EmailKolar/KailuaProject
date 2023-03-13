@@ -36,6 +36,7 @@ public class Renter extends UserInput {
         boolean isRunning = true;
 
         while (isRunning) {
+            renters = new ArrayList<>();
             sqlHandler.generateRenterList(); //Creates ArrayList of renters
             printRenterMenu();
             int choice = readMenuChoice();

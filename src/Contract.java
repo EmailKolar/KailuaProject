@@ -12,7 +12,7 @@ public class Contract extends UserInput {
     private String registrationNumber;
     private int odometerAtStart;
 
-    private ArrayList<Contract> contracts = new ArrayList<>(); //TODO gøre static?
+    private static ArrayList<Contract> contracts = new ArrayList<>();
     private static SQLHandler sqlHandler = new SQLHandler();
 
     public Contract(String contractID, String fromDateTime, String toDateTime, String driverLicenseNumber,
@@ -35,6 +35,7 @@ public class Contract extends UserInput {
         boolean isRunning = true;
 
         while (isRunning) {
+            contracts = new ArrayList<>();
             sqlHandler.generateContractList(); //Creates ArrayList of contracts
             printContractMenu();
             int choice = readMenuChoice();
