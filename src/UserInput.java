@@ -15,7 +15,7 @@ public class UserInput {
     public int intIn(String message) {
         System.out.println(message);
         int num = in.nextInt();
-        //in.nextLine(); //TODO TEST ME SCANNER BUG?
+        in.nextLine();
         return num;
     }
 
